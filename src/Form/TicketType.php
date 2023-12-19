@@ -5,7 +5,9 @@ namespace App\Form;
 use App\Entity\Ticket;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 
 class TicketType extends AbstractType
 {
@@ -14,12 +16,20 @@ class TicketType extends AbstractType
         $builder
             ->add('title')
             ->add('description')
-            ->add('image')
-            ->add('dateCreate')
-            ->add('lastUpdate')
-            ->add('status')
-            ->add('owner')
-            ->add('helper')
+            ->add('image', FileType::class, [
+                'label' => 'Capture d\'écran',
+                'mapped' => false,
+                'required' => false,
+                'constraints' => [
+                    new File([
+                    'maxSize' => '5000k',
+                    'mimeTypes' => [
+                        'image/*',
+                    ],
+                    'mimeTypesMessage' => 'Le fichier doit être une image de 5Mo maximum.',
+                    ])
+                ],
+            ])
         ;
     }
 
