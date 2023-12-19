@@ -18,7 +18,7 @@
                     {% if app.user %}
                         <a class="header__content__nav__link" href="/">Accueil</a>
                         <a class="header__content__nav__link" href="/ticket/new">Nouveau ticket</a>
-                        <a class="header__content__nav__link" href="#">Mon compte</a>
+                        <a class="header__content__nav__link" href="/my_account">Mon compte</a>
                         {% for role in app.user.roles %}
                             {% if role == 'ROLE_ADMIN' %}
                                 <a class="header__content__nav__link" href="#">Espace administrateur</a>

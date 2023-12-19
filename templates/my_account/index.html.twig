@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello MyAccountController!{% endblock %}
+
+{% block body %}
+
+<div class="myAccount">
+    <h2>Mon compte</h2>
+    <div>
+        <h3>Mes informations</h3>
+        <p>{{ app.user.firstName }} {{ app.user.lastName }}</p>
+        <p>email : {{app.user.email}}</p>
+        {% if app.user.idDiscord %}
+        <p>identifiant discord : {{app.user.idDiscord}}</p>
+        {% endif %}
+        <p>{{app.user.avatar}}</p>
+        <img src="{{ asset('uploads/avatar/' ~ app.user.avatar) }}">
+    </div>
+    <a>Modifier mon compte</a>
+    <div>
+        <h3>Mes tickets</h3>
+    </div>
+</div>
+{% endblock %}
