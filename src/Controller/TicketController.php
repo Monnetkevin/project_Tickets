@@ -6,10 +6,12 @@ use App\Entity\Ticket;
 use App\Form\TicketType;
 use App\Repository\TicketRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Validator\Constraints\DateTime;
+use Symfony\Component\String\Slugger\SluggerInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 #[Route('/ticket')]
 class TicketController extends AbstractController
@@ -23,13 +25,45 @@ class TicketController extends AbstractController
     }
 
     #[Route('/new', name: 'app_ticket_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
+    public function new(Request $request, EntityManagerInterface $entityManager, SluggerInterface $slugger): Response
     {
         $ticket = new Ticket();
+        $now = new \DateTime();
+        /*
+        $user = $this->getUser();
+        $user = $user->getId();
+        $promotion = $this->getUser();
+        $promotion = $promotion->getPromotion();
+        $promotion = 1;
+*/
+        $status = 1;
+
         $form = $this->createForm(TicketType::class, $ticket);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+           
+            $ticket->setDateCreate($now);
+            $ticket->getStatus("1");
+ /*
+            $ticket->setOwner($user);
+            $ticket->setPromotion($promotion);
+*/
+
+            $imageFile = $form->get('image')->getData();
+            if ($imageFile) {
+                $originalFilename = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
+                $safeFilename = $slugger->slug($originalFilename);
+                $newFilename = $safeFilename . '-' . uniqid() . '.' . $imageFile->guessExtension();
+                $imageFile->move(
+                    $this->getParameter('images_directory'),
+                    $newFilename
+                );
+                $ticket->setImage($newFilename);
+            }else{
+                $ticket->setImage(null);
+            }
+
             $entityManager->persist($ticket);
             $entityManager->flush();
 
