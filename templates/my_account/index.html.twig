@@ -13,10 +13,10 @@
         {% if app.user.idDiscord %}
         <p>identifiant discord : {{app.user.idDiscord}}</p>
         {% endif %}
-        <p>{{app.user.avatar}}</p>
         <img src="{{ asset('uploads/avatar/' ~ app.user.avatar) }}">
+        <a href="{{ path('app_user_edit', {'id': app.user.id}) }}">Modifier mon compte</a>
     </div>
-    <a>Modifier mon compte</a>
+    
     <div>
         <h3>Mes tickets</h3>
     </div>
