@@ -5,15 +5,36 @@
 
 {% block body %}
 	<div class="home">
-
-		{% for ticket in tickets %}
-
-			{{ ticket.title }}
-			{{ ticket.description }}
-			{{ ticket.dateCreate ? ticket.dateCreate|date('Y-m-d H:i:s') : '' }}
-			{{ ticket.lastUpdate ? ticket.lastUpdate|date('Y-m-d H:i:s') : '' }}
-			<a href="{{ path('app_ticket_show', {'id': ticket.id}) }}">show</a>
-			<a href="{{ path('app_ticket_edit', {'id': ticket.id}) }}">edit</a>
-		{% endfor %}
+		<h1 class="home__title">Tickets en cours !!</h1>
+		<div class="container">
+			<div class="container__newTicket">
+				{% for ticket in tickets %}
+					{% if ticket.status.status != "Resolved" %}
+						<div class="ticket container__newTicket__home">
+							<div class="ticket__title">
+								{{ ticket.title }}
+							</div>
+							<div class="ticket__description">
+								{{ ticket.description }}
+							</div>
+							{{ ticket.dateCreate ? ticket.dateCreate|date('Y-m-d H:i:s') : '' }}
+							<a href="{{ path('app_ticket_show', {'id': ticket.id}) }}">show</a>
+						</div>
+					{% endif %}
+				{% endfor %}
+			</div>
+			<div class="container__connecte">
+				<h2 class="container__connecte__title">Connectés</h2>
+				{% for user in users %}
+					{% if user.isConnected == true %}
+						<div class="container__connecte__card">
+							<img class="container__connecte__card__icon" src="{{ asset('uploads/avatar/' ~ user.avatar) }}"/>
+							<p class="container__connecte__card__firstname">{{user.firstName}}
+								{{user.lastName|u.truncate(2,'.')}}</p>
+						</div>
+					{% endif %}
+				{% endfor %}
+			</div>
+		</div>
 	</div>
 {% endblock %}

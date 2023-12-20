@@ -1,3 +1,35 @@
 @use '../utils/_variables' as *
 
-    
+.home
+  &__title
+    text-align: center
+    color: $primaryColor
+
+.container
+    display: flex
+    margin-top: 20px
+    &__newTicket
+      display: flex
+      margin: 0 auto
+      &__home
+        margin: 20px
+    &__connecte
+      width: 15%
+      border: 1px solid black
+      border-radius: 10px 0 0 0
+      &__title
+        text-align: center
+      &__card
+        display: flex
+        margin: 8px
+        
+        &__icon
+          border-radius: 50%
+          width: 20%
+        &__firstname
+          padding-left: 8px
+          width: 70%
+    &__inResolved
+      display: flex
+      width: 85%
+         
