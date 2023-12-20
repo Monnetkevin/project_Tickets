@@ -7,6 +7,13 @@ a {
   color: black;
 }
 
+.pageContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .header__title {
   height: 50px;
   width: 100%;
@@ -81,4 +88,64 @@ a {
 }
 .footer__img {
   height: 110px;
+}
+
+.ticket {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid black;
+  border-radius: 20px 5px 20px 20px;
+  width: 150px;
+  min-height: 100px;
+  max-height: 200px;
+}
+.ticket__description {
+  display: none;
+  background-color: rgb(40, 41, 49);
+  border-radius: 0 0 19px 19px;
+  width: 100%;
+  height: 100px;
+  align-self: bottom;
+  margin-bottom: 0;
+}
+.ticket:hover__description {
+  display: block;
+}
+
+.cardAccount {
+  margin-bottom: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.cardAccount__content {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+  gap: 30px;
+  margin-bottom: 40px;
+}
+.cardAccount__content__icon {
+  border-radius: 50%;
+  width: 100px;
+}
+.cardAccount__modifyButton {
+  align-self: center;
+}
+
+.myTickets {
+  margin-bottom: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.myTickets__container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 30px;
 }/*# sourceMappingURL=main.css.map */

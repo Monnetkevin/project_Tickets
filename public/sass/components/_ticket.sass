@@ -1,0 +1,25 @@
+@use '../utils/_variables' as *
+
+.ticket
+    display: flex
+    flex-direction: column
+    justify-content: space-between
+    align-items: center
+    border: 1px solid black
+    border-radius: 20px 5px 20px 20px 
+    width: 150px
+    min-height: 100px
+    max-height: 200px
+    &__title
+    &__owner
+    &__description
+        display: none
+        background-color: $secondaryColor
+        border-radius: 0 0 19px 19px
+        width: 100%
+        height: 100px
+        align-self: bottom
+        margin-bottom: 0
+    &:hover
+        &__description
+            display: block
