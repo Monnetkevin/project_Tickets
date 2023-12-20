@@ -1,9 +1,19 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello MainController!{% endblock %}
+{% block title %}Hello MainController!
+{% endblock %}
 
 {% block body %}
-<div class="home">
-    Dashboard
-</div>
+	<div class="home">
+
+		{% for ticket in tickets %}
+
+			{{ ticket.title }}
+			{{ ticket.description }}
+			{{ ticket.dateCreate ? ticket.dateCreate|date('Y-m-d H:i:s') : '' }}
+			{{ ticket.lastUpdate ? ticket.lastUpdate|date('Y-m-d H:i:s') : '' }}
+			<a href="{{ path('app_ticket_show', {'id': ticket.id}) }}">show</a>
+			<a href="{{ path('app_ticket_edit', {'id': ticket.id}) }}">edit</a>
+		{% endfor %}
+	</div>
 {% endblock %}
