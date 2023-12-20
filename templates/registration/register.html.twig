@@ -6,11 +6,9 @@
 {% block body %}
 	<div class="form">
 		<h1 class="form__title">Register</h1>
-
-		{{ form_errors(registrationForm) }}
 		<div class="form__content">
-
 			{{ form_start(registrationForm) }}
+			{{ form_errors(registrationForm) }}
 			<div class="form__content__label">
 				{{ form_label(registrationForm.firstName)}}
 			</div>

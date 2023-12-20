@@ -45,16 +45,22 @@ class StatusController extends AbstractController
     }
 
     #[Route('/{id}', name: 'app_status_show', methods: ['GET'])]
-    public function show(Status $status): Response
+    public function show(Status $status, $id): Response
     {
+        if ($id <= 3) {
+            return $this->redirectToRoute('app_status_index', [], Response::HTTP_SEE_OTHER);
+        }
         return $this->render('status/show.html.twig', [
             'status' => $status,
         ]);
     }
 
     #[Route('/{id}/edit', name: 'app_status_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Status $status, EntityManagerInterface $entityManager): Response
+    public function edit(Request $request, Status $status, EntityManagerInterface $entityManager, $id): Response
     {
+        if ($id <= 3) {
+            return $this->redirectToRoute('app_status_index', [], Response::HTTP_SEE_OTHER);
+        }
         $form = $this->createForm(StatusType::class, $status);
         $form->handleRequest($request);
 

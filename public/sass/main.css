@@ -144,6 +144,47 @@ a {
   font-size: 13px;
 }
 
+.home__title {
+  text-align: center;
+  color: rgb(49, 83, 151);
+}
+
+.container {
+  display: flex;
+  margin-top: 20px;
+}
+.container__newTicket {
+  display: flex;
+  margin: 0 auto;
+}
+.container__newTicket__home {
+  margin: 20px;
+}
+.container__connecte {
+  width: 15%;
+  border: 1px solid black;
+  border-radius: 10px 0 0 0;
+}
+.container__connecte__title {
+  text-align: center;
+}
+.container__connecte__card {
+  display: flex;
+  margin: 8px;
+}
+.container__connecte__card__icon {
+  border-radius: 50%;
+  width: 20%;
+}
+.container__connecte__card__firstname {
+  padding-left: 8px;
+  width: 70%;
+}
+.container__inResolved {
+  display: flex;
+  width: 85%;
+}
+
 .cardAccount {
   margin-bottom: 50px;
   display: flex;
@@ -171,6 +212,7 @@ a {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-bottom: 15px;
 }
 .myTickets__title {
   margin-bottom: 50px;
