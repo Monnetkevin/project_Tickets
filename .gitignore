@@ -20,6 +20,6 @@
 ###< symfony/phpunit-bridge ###
 
 ###> css ###
-\public\sass\main.css
-\public\sass\main.css.map
+/public/sass/main.css
+/public/sass/main.css.map
 ###< css ###
