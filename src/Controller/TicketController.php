@@ -15,7 +15,9 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Validator\Constraints\DateTime;
 use Symfony\Component\String\Slugger\SluggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
+#[security("is_granted('ROLE_USER')")]
 #[Route('/ticket')]
 class TicketController extends AbstractController
 {
@@ -111,7 +113,8 @@ class TicketController extends AbstractController
             'form' => $form,
         ]);
     }
-
+    
+    #[security("is_granted('ROLE_ADMIN')")]
     #[Route('/{id}', name: 'app_ticket_delete', methods: ['POST'])]
     public function delete(Request $request, Ticket $ticket, EntityManagerInterface $entityManager): Response
     {
