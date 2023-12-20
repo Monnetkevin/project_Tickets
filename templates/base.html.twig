@@ -21,6 +21,11 @@
 				<nav class="header__content__nav">
 					{% if app.user %}
 						<a class="header__content__nav__link" href="/">Accueil</a>
+            <a class="header__content__nav__link" href="/promotion">(promotion)</a>
+            <a class="header__content__nav__link" href="/status">(status)</a>
+            <a class="header__content__nav__link" href="/ticket">(ticket)</a>
+            <a class="header__content__nav__link" href="/user">(user)</a>
+            <a class="header__content__nav__link" href="/403">(403)</a>
 						<a class="header__content__nav__link" href="/ticket/new">Nouveau ticket</a>
 						<a class="header__content__nav__link" href="/myaccount">Mon compte</a>
 						{% for role in app.user.roles %}
@@ -41,7 +46,6 @@
 			</div>
 		</header>
 		{% block body %}{% endblock %}
-
 		<footer class="footer">
 			<img class="footer__img" src="{{asset('icons/arinfoLogo.png')}}" alt="Arinfo, École des Métiers du Numérique."/></footer</body>
 	</body>
