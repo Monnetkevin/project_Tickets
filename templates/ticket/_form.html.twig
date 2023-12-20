@@ -1,4 +1,19 @@
-{{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
-{{ form_end(form) }}
+<div class="form">
+	{{ form_start(form) }}
+	<div class="form__content">
+		<div class="form__content__label">
+			{{ form_label(form.title)}}
+		</div>
+		{{ form_widget(form.title, {'attr': {'class': 'form__content__input form-control'}})}}
+		<div class="form__content__label">
+			{{ form_label(form.description)}}
+		</div>
+		{{ form_widget(form.description, {'attr': {'class': 'form__content__input form-control'}})}}
+		<div class="form__content__label">
+			{{ form_label(form.image)}}
+		</div>
+		{{ form_widget(form.image, {'attr': {'class': 'form__content__input form-control'}})}}
+		<button class="button button--plain">{{ button_label|default('Save') }}</button>
+		{{ form_end(form) }}
+	</div>
+</div>

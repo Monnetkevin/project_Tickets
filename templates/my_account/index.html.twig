@@ -4,21 +4,70 @@
 
 {% block body %}
 
-<div class="myAccount">
+<div class="pageContainer">
     <h2>Mon compte</h2>
-    <div>
+    <article class="cardAccount">
         <h3>Mes informations</h3>
-        <p>{{ app.user.firstName }} {{ app.user.lastName }}</p>
-        <p>email : {{app.user.email}}</p>
-        {% if app.user.idDiscord %}
-        <p>identifiant discord : {{app.user.idDiscord}}</p>
-        {% endif %}
-        <p>{{app.user.avatar}}</p>
-        <img src="{{ asset('uploads/avatar/' ~ app.user.avatar) }}">
-    </div>
-    <a>Modifier mon compte</a>
-    <div>
-        <h3>Mes tickets</h3>
-    </div>
+        <div class="cardAccount__content">
+            <img class="cardAccount__content__icon" src="{{ asset('uploads/avatar/' ~ app.user.avatar) }}">
+            <div>
+                <p><b>Nom</b> : {{ app.user.lastName }}</p>
+                <p><b>Prénom</b> : {{ app.user.firstName }}</p>
+                <p>email : {{app.user.email}}</p>
+                {% if app.user.idDiscord %}
+                    <p>identifiant discord : {{app.user.idDiscord}}</p>
+                {% endif %}
+            </div>
+        </div>
+        
+        <a class="button button--plain cardAccount__modifyButton" href="{{ path('app_user_edit', {'id': app.user.id}) }}">Modifier mon compte</a>
+    </article>
+    
+    <article class="myTickets">
+        <h3 class="myTickets__title">Mes tickets actifs</h3>
+        <div class="myTickets__container">
+            {% for ticket in tickets %}
+                {% if ticket.owner.id == app.user.id and ticket.status.status != "Resolved"%}
+                <div class="ticket" onmouseout=hiddeTicket("ticket{{ticket.id}}") onmouseover=switchDisplay("ticket{{ticket.id}}") id="ticket{{ticket.id}}">
+                    <h4 class="ticket__title">{{ticket.title}}</h4>
+                    <div class="ticket__owner">{{ticket.owner.firstName}}</div>
+                    <p class="ticket__description">{{ticket.description}}</p>
+                </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </article>
+
+    <article class="myOldTickets">
+        <h3 class="myTickets__title">Mes anciens tickets</h3>
+        <div class="myTickets__container">
+            {% for ticket in tickets %}
+                {% if ticket.owner.id == app.user.id and ticket.status.status == "Resolved" %}
+                    <div class="ticket" onmouseout=hiddeTicket("ticket{{ticket.id}}") onmouseover=switchDisplay("ticket{{ticket.id}}") id="ticket{{ticket.id}}">
+                    <h4 class="ticket__title">{{ticket.title}}</h4>
+                    <div class="ticket__owner">{{ticket.owner.firstName}}</div>
+                    <p class="ticket__description">{{ticket.description}}</p>
+                </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </article>
 </div>
+
+{# <div class="one">
+
+    <div class="two">
+    
+    contenu caché à afficher
+
+    </div>
+    <div class="three">
+        contenu de la div
+    </div>
+</div> #}
+
+
+<script src="{{asset('js/displayTicket.js')}}">
+
+</script>
 {% endblock %}
