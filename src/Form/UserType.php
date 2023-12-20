@@ -3,24 +3,40 @@
 namespace App\Form;
 
 use App\Entity\User;
+use App\Entity\Promotion;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 class UserType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('email')
-            ->add('roles')
+            ->add('email')            
+            ->add('roles', ChoiceType::class, [
+                'multiple' => true,
+                'expanded' => true,
+                'choices'  => [
+                    'Utilisateur' => 'ROLE_USER',
+                    'Administrateur' => 'ROLE_ADMIN',
+                ],
+            ])
             ->add('password')
             ->add('firstName')
             ->add('lastName')
             ->add('avatar')
             ->add('idDiscord')
             ->add('isConnected')
-            ->add('promotion')
+            ->add('promotion', EntityType::class, [
+                'label' => 'Promotion',
+                'class' => Promotion::class,
+                'choice_label' => 'promotion',
+                'multiple' => true,
+                'expanded' => true,
+            ])
         ;
     }
 
