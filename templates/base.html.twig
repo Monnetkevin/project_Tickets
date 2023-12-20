@@ -1,50 +1,52 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
-        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
-        <link rel="stylesheet" href="{{ asset('sass/main.css') }}">
-    </head>
-    <body>
-        <header class="header">
-            <div class="header__title">
-                <h1 class="header__title__text">Ticket Helper</h1>
-            </div>
-            <div class="header__content">
-                <img class="header__content__img" src="{{asset('icons/arinfoLogo.png')}}" alt="Arinfo, École des Métiers du Numérique"/>
-                <nav class="header__content__nav">
-                    {% if app.user %}
-                        <a class="header__content__nav__link" href="/">Accueil</a>
-                        <a class="header__content__nav__link" href="/promotion">(promotion)</a>
-                        <a class="header__content__nav__link" href="/status">(status)</a>
-                        <a class="header__content__nav__link" href="/ticket">(ticket)</a>
-                        <a class="header__content__nav__link" href="/user">(user)</a>
-                        <a class="header__content__nav__link" href="/403">(403)</a>
-                        <a class="header__content__nav__link" href="/ticket/new">Nouveau ticket</a>
-                        <a class="header__content__nav__link" href="/myaccount">Mon compte</a>
-                        {% for role in app.user.roles %}
-                            {% if role == 'ROLE_ADMIN' %}
-                                <a class="header__content__nav__link" href="#">Espace administrateur</a>
-                            {% endif %}
-                        {% endfor %}
-                    {% endif %}
-                </nav>
-                <div class="header__content__buttons">
-                    {% if app.user %}
-                        <a class="header__content__buttons__button header__content__buttons__button--empty" href="/logout">Déconnexion</a>
-                    {% else %}
-                        <a class="header__content__buttons__button header__content__buttons__button--empty" href="/register">Créer un compte</a>
-                        <a class="header__content__buttons__button header__content__buttons__button--plain" href="/login">Se connecter</a>
-                    {% endif %}
-                </div>
-            </div>
-        </header>
-        {% block body %}{% endblock %}
-
-        <footer class="footer">
-            <img class="footer__img" src="{{asset('icons/arinfoLogo.png')}}" alt="Arinfo, École des Métiers du Numérique."/>
-        </footer
-    </body>
+	<head>
+		<meta charset="UTF-8">
+		<title>
+			{% block title %}Welcome!
+			{% endblock %}
+		</title>
+		<link
+		rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+		{# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+		<link rel="stylesheet" href="{{ asset('sass/main.css') }}">
+	</head>
+	<body>
+		<header class="header">
+			<div class="header__title">
+				<h1 class="header__title__text">Ticket Helper</h1>
+			</div>
+			<div class="header__content">
+				<img class="header__content__img" src="{{asset('icons/arinfoLogo.png')}}" alt="Arinfo, École des Métiers du Numérique"/>
+				<nav class="header__content__nav">
+					{% if app.user %}
+						<a class="header__content__nav__link" href="/">Accueil</a>
+            <a class="header__content__nav__link" href="/promotion">(promotion)</a>
+            <a class="header__content__nav__link" href="/status">(status)</a>
+            <a class="header__content__nav__link" href="/ticket">(ticket)</a>
+            <a class="header__content__nav__link" href="/user">(user)</a>
+            <a class="header__content__nav__link" href="/403">(403)</a>
+						<a class="header__content__nav__link" href="/ticket/new">Nouveau ticket</a>
+						<a class="header__content__nav__link" href="/myaccount">Mon compte</a>
+						{% for role in app.user.roles %}
+							{% if role == 'ROLE_ADMIN' %}
+								<a class="header__content__nav__link" href="#">Espace administrateur</a>
+							{% endif %}
+						{% endfor %}
+					{% endif %}
+				</nav>
+				<div class="header__content__buttonContainer">
+					{% if app.user %}
+						<a class="button button--empty" href="/logout">Déconnexion</a>
+					{% else %}
+						<a class="button button--empty" href="/register">Créer un compte</a>
+						<a class="button button--plain" href="/login">Se connecter</a>
+					{% endif %}
+				</div>
+			</div>
+		</header>
+		{% block body %}{% endblock %}
+		<footer class="footer">
+			<img class="footer__img" src="{{asset('icons/arinfoLogo.png')}}" alt="Arinfo, École des Métiers du Numérique."/></footer</body>
+	</body>
 </html>
