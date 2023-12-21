@@ -1,11 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello MyAccountController!{% endblock %}
+{% block title %}Mon compte{% endblock %}
 
 {% block body %}
 
 <div class="pageContainer">
-    <h2>Mon compte</h2>
+    <h2>Gestion de mon compte utilisateur</h2>
     <article class="cardAccount">
         <h3>Mes informations</h3>
         <div class="cardAccount__content">
@@ -13,9 +13,9 @@
             <div>
                 <p><b>Nom</b> : {{ app.user.lastName }}</p>
                 <p><b>Prénom</b> : {{ app.user.firstName }}</p>
-                <p>email : {{app.user.email}}</p>
+                <p><b>email</b> : {{app.user.email}}</p>
                 {% if app.user.idDiscord %}
-                    <p>identifiant discord : {{app.user.idDiscord}}</p>
+                    <p><b>identifiant discord</b> : {{app.user.idDiscord}}</p>
                 {% endif %}
             </div>
         </div>
@@ -28,6 +28,30 @@
         <div class="myTickets__container">
             {% for ticket in tickets %}
                 {% if ticket.owner.id == app.user.id and ticket.status.status != "Resolved"%}
+                    <div id="ticket{{ticket.id}}">   
+                        <div class="ticket__icons">
+                            <a href="{{ path('app_ticket_edit', {'id': ticket.id}) }}"><img class="ticket__icons--pencil" src="{{asset('icons/pencil.svg')}}" alt="modifier"></a>
+                            <a href="{{ path('app_ticket_delete', {'id': ticket.id}) }}"><img class="ticket__icons--trash" src="{{asset('icons/trash.svg')}}" alt="modifier"></a>
+                        </div>
+                        <div class="ticket" onmouseout=hiddeTicket("ticket{{ticket.id}}") onmouseover=showTicket("ticket{{ticket.id}}")>
+                            
+                            <a href="{{ path('app_ticket_show', {'id': ticket.id}) }}" class="ticket__link">
+                                <h4 class="ticket__title">{{ticket.title}}</h4>
+                                <div class="ticket__owner  button button--small button--plain">{{ticket.owner.firstName}}</div>
+                                <p class="ticket__description">{{ticket.description}}</p>
+                            </a>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </article>
+
+    <article class="myTickets">
+        <h3 class="myTickets__title">Mes anciens tickets</h3>
+        <div class="myTickets__container">
+            {% for ticket in tickets %}
+                {% if ticket.owner.id == app.user.id and ticket.status.status == "Resolved" %}
                     <div class="ticket" onmouseout=hiddeTicket("ticket{{ticket.id}}") onmouseover=showTicket("ticket{{ticket.id}}") id="ticket{{ticket.id}}">
                         <h4 class="ticket__title">{{ticket.title}}</h4>
                         <div class="ticket__owner">{{ticket.owner.firstName}}</div>
@@ -38,22 +62,6 @@
         </div>
     </article>
 
-    <article class="myOldTickets">
-        <h3>Mes anciens tickets</h3>
-        <div class="myTickets__container">
-            {% for ticket in tickets %}
-                {% if ticket.owner.id == app.user.id and ticket.status.status == "Resolved" %}
-                <div class="ticket">
-                <div>
-                    <h4 class="ticket__title">{{ticket.title}}</h4>
-                    <div class="ticket__owner">{{ticket.owner.firstName}}</div>
-                </div>
-                    <p class="ticket__description">{{ticket.description}}</p>
-                </div>
-                {% endif %}
-            {% endfor %}
-        </div>
-    </article>
 </div>
 
 {# <div class="one">
