@@ -1,10 +1,6 @@
 @use '../utils/_variables' as *
 
 .ticket
-    display: flex
-    flex-direction: column
-    justify-content: space-between
-    align-items: center
     border: 1px solid black
     border-radius: 20px 5px 20px 20px 
     width: 150px
@@ -12,8 +8,28 @@
     transition: 0.3s ease-out
     margin-bottom: 50px
     overflow: hidden
+    &:hover
+        box-shadow: $primaryColor -3px 3px 10px
+    &__icons
+        position: relative
+        display: flex
+        flex-direction: row
+        justify-content: end
+        gap: 15px
+        padding-right: 5px
+        &--pencil
+            width: 12px
+        &--trash
+            width: 12px
+    &__link
+        display: flex
+        flex-direction: column
+        justify-content: space-between
+        align-items: center
     &__title
+        text-align: center
     &__owner
+        text-align: center
     &__description
         transition: 0.3s ease-out
         visibility: hidden

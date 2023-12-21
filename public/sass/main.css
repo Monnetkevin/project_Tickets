@@ -109,6 +109,9 @@ a {
   border: 0.5px solid rgb(49, 83, 151);
   color: white;
 }
+.button--small {
+  width: 45px;
+}
 .button:hover {
   border: 1.5px solid black;
   background-color: black;
@@ -117,10 +120,6 @@ a {
 }
 
 .ticket {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
   border: 1px solid black;
   border-radius: 20px 5px 20px 20px;
   width: 150px;
@@ -128,6 +127,35 @@ a {
   transition: 0.3s ease-out;
   margin-bottom: 50px;
   overflow: hidden;
+}
+.ticket:hover {
+  box-shadow: rgb(49, 83, 151) -3px 3px 10px;
+}
+.ticket__icons {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  gap: 15px;
+  padding-right: 5px;
+}
+.ticket__icons--pencil {
+  width: 12px;
+}
+.ticket__icons--trash {
+  width: 12px;
+}
+.ticket__link {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.ticket__title {
+  text-align: center;
+}
+.ticket__owner {
+  text-align: center;
 }
 .ticket__description {
   transition: 0.3s ease-out;
@@ -186,38 +214,56 @@ a {
   width: 85%;
 }
 
+h2 {
+  margin-bottom: 35px;
+}
+
+h3 {
+  padding: 0;
+}
+
 .cardAccount {
   margin-bottom: 50px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  border: 1px solid black;
+  border-radius: 20px 5px 20px 20px;
+  padding: 20px;
 }
 .cardAccount__content {
   display: flex;
   flex-direction: row;
   justify-content: start;
   align-items: center;
-  gap: 30px;
+  gap: 50px;
   margin-bottom: 40px;
 }
 .cardAccount__content__icon {
   border-radius: 50%;
-  width: 100px;
+  width: 130px;
 }
 .cardAccount__modifyButton {
   align-self: center;
 }
 
 .myTickets {
+  width: 100%;
+  margin: 0;
   margin-bottom: 50px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-bottom: 15px;
 }
 .myTickets__title {
+  margin: 0;
+  width: 100%;
   margin-bottom: 50px;
+  background-color: rgb(49, 83, 151);
+  padding: 25px 0;
+  text-align: center;
+  color: white;
 }
 .myTickets__container {
   display: flex;
@@ -226,6 +272,20 @@ a {
   justify-content: center;
   align-items: center;
   gap: 30px;
+}
+
+.myOldTickets {
+  width: 100%;
+  margin: 0;
+}
+.myOldTickets__title {
+  margin: 0;
+  width: 100%;
+  margin-bottom: 50px;
+  background-color: rgb(40, 41, 49);
+  padding: 25px 0;
+  text-align: center;
+  color: white;
 }/*# sourceMappingURL=main.css.map */
 =======
 >>>>>>> fec4897a042e978b3b6397acfaabdb55189055ce
