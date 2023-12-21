@@ -46,20 +46,55 @@
             {% endfor %}
         </div>
     </article>
+    
 
-    <article class="myTickets">
-        <h3 class="myTickets__title">Mes anciens tickets</h3>
-        <div class="myTickets__container">
+    <article class="myOldTickets">
+        <h3 class="myOldTickets__title">Mes anciens tickets</h3>
+        <table class="{# invisible en mobile #}">
+        desktop
+            <thead>
+                <tr>
+                    <th>Titre</th>
+                    <th>Description</th>
+                    <th>Capture d'écran</th>
+                </tr>
+            </thead>
+            <tbody>
             {% for ticket in tickets %}
-                {% if ticket.owner.id == app.user.id and ticket.status.status == "Resolved" %}
-                    <div class="ticket" onmouseout=hiddeTicket("ticket{{ticket.id}}") onmouseover=showTicket("ticket{{ticket.id}}") id="ticket{{ticket.id}}">
-                        <h4 class="ticket__title">{{ticket.title}}</h4>
-                        <div class="ticket__owner">{{ticket.owner.firstName}}</div>
-                        <p class="ticket__description">{{ticket.description}}</p>
-                    </div>
+                {% if ticket.status.id == 3 %}
+                    <tr>
+                        <td>{{ticket.title}}</td>
+                        <td>{{ticket.description}}<td>
+                        <td>
+                            {% if ticket.image %}
+                            <img src="{{asset('uploads/img/{{ticket.image}}')}}"/>
+                            {% endif %}
+                        </td>
+                    </tr>
                 {% endif %}
             {% endfor %}
-        </div>
+            </tbody>
+        </table>
+
+
+        <table class="{# invisible en desktop #}">
+        mobile
+            <tbody>
+            {% for ticket in tickets %}
+                {% if ticket.status.id == 3 %}
+                    <tr>
+                        <th>Titre</th>
+                        <td>{{ticket.title}}</td>
+                    </tr>
+                    <tr>
+                        <th>description</th>
+                        <td>{{ticket.description}}</td>
+                    </tr>
+                {% endif %}
+            {% endfor %}
+            </tbody>
+        </table>
+
     </article>
 
 </div>
