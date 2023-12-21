@@ -39,7 +39,7 @@ class Ticket
 
     #[ORM\ManyToOne(inversedBy: 'tickets')]
     private ?User $helper = null;
-    
+
     public function getId(): ?int
     {
         return $this->id;
