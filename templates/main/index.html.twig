@@ -5,24 +5,56 @@
 
 {% block body %}
 	<div class="home">
-		<h1 class="home__title">Tickets en cours !!</h1>
+		<h2 class="home__title">Tickets en cours !!</h2>
 		<div class="container">
-			<div class="container__newTicket">
+
+			<div class="container__ticket">
 				{% for ticket in tickets %}
 					{% if ticket.status.status != "Resolved" %}
-						<div class="ticket container__newTicket__home">
+						<article class="ticket container__ticket__home">
 							<div class="ticket__title">
 								{{ ticket.title }}
 							</div>
 							<div class="ticket__description">
 								{{ ticket.description }}
 							</div>
+							{{ticket.owner.firstName}}
+							{% if ticket.helper != NULL %}
+								{{ticket.helper.firstName}}
+							{% endif %}
 							{{ ticket.dateCreate ? ticket.dateCreate|date('Y-m-d H:i:s') : '' }}
+							<a href="{{ path('app_main_edit', {'id': ticket.id}) }}">prendre</a>
 							<a href="{{ path('app_ticket_show', {'id': ticket.id}) }}">show</a>
-						</div>
+						</article>
 					{% endif %}
 				{% endfor %}
 			</div>
+
+			<div class="container__ticket__inResolved">
+				<h2 class="home__title">Tickets résolus !!</h2>
+				{% for ticket in ticketsResolve %}
+					{% if ticket.status.status == "Resolved" %}
+						<article class="ticket container__ticket__inResolved__home">
+							<div class="ticket__title">
+								{{ ticket.title }}
+							</div>
+							<div class="ticket__description">
+								{{ ticket.description }}
+							</div>
+							{{ticket.owner.firstName}}
+							{% if ticket.helper != NULL %}
+								{{ticket.helper.firstName}}
+							{% endif %}
+							{{ ticket.dateCreate ? ticket.dateCreate|date('Y-m-d H:i:s') : '' }}
+							{% if ticket.status == "Resolved" %}
+								<a href="{{ path('app_main_edit', {'id': ticket.id}) }}">prendre</a>
+							{% endif %}
+							<a href="{{ path('app_ticket_show', {'id': ticket.id}) }}">show</a>
+						</article>
+					{% endif %}
+				{% endfor %}
+			</div>
+
 			<div class="container__connecte">
 				<h2 class="container__connecte__title">Connectés</h2>
 				{% for user in users %}
