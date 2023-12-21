@@ -14,21 +14,21 @@ a {
   align-items: center;
 }
 
-.visibiliyMobile {
-  display: block;
+table.visibiliyMobile {
+  display: table;
   margin: 0 auto;
 }
 
-.visibiliyDesktop {
+table.visibiliyDesktop {
   display: none;
 }
 
 @media (min-width: 768px) {
-  .visibiliyMobile {
+  table.visibiliyMobile {
     display: none;
   }
-  .visibiliyDesktop {
-    display: block;
+  table.visibiliyDesktop {
+    display: table;
     width: 768px;
     margin: 0 auto;
   }
@@ -245,9 +245,10 @@ h3 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 1px solid black;
+  border: 2.5px solid rgb(49, 83, 151);
   border-radius: 20px 5px 20px 20px;
-  padding: 20px;
+  padding: 0px 60px 20px 60px;
+  box-shadow: rgb(49, 83, 151) -3px 3px 15px;
 }
 .cardAccount__content {
   display: flex;
@@ -292,71 +293,6 @@ h3 {
   gap: 30px;
 }
 
-<<<<<<< HEAD
-.cardPromo {
-  margin-bottom: 50px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.cardPromo__content {
-  display: flex;
-  flex-direction: row;
-  justify-content: start;
-  align-items: center;
-  gap: 30px;
-  margin-bottom: 40px;
-}
-.cardPromo__content__icon {
-  border-radius: 50%;
-  width: 100px;
-}
-.cardPromo__modifyButton {
-  align-self: center;
-}
-
-.cardAccount {
-  margin-bottom: 50px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.cardAccount__content {
-  display: flex;
-  flex-direction: row;
-  justify-content: start;
-  align-items: center;
-  gap: 30px;
-  margin-bottom: 40px;
-}
-.cardAccount__content__icon {
-  border-radius: 50%;
-  width: 100px;
-}
-.cardAccount__modifyButton {
-  align-self: center;
-}
-
-.cardTickets {
-  margin-bottom: 50px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 15px;
-}
-.cardTickets__title {
-  margin-bottom: 50px;
-}
-.cardTickets__container {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  gap: 30px;
-}/*# sourceMappingURL=main.css.map */
-=======
 .myOldTickets {
   width: 100%;
   margin: 0;
@@ -369,7 +305,68 @@ h3 {
   padding: 25px 0;
   text-align: center;
   color: white;
+}
+
+.admin h2 {
+  text-align: center;
+  width: 100%;
+}
+.admin .button {
+  margin-bottom: 20px;
+}
+.admin__promo {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+.admin__cardPromo {
+  margin-bottom: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2.5px solid rgb(49, 83, 151);
+  border-radius: 20px 5px 20px 20px;
+  padding: 0px 20px;
+  box-shadow: rgb(49, 83, 151) -3px 3px 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 10px 50px;
+}
+.admin__user {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+.admin__cardUser {
+  margin-bottom: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2.5px solid rgb(49, 83, 151);
+  border-radius: 20px 5px 20px 20px;
+  padding: 0px 20px;
+  box-shadow: rgb(49, 83, 151) -3px 3px 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 10px 50px;
+}
+.admin .table {
+  max-width: 768px;
+  margin: 0 auto;
+}
+.admin table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.admin table tr:nth-child(even) th {
+  background-color: #F6F8FA;
+}
+.admin table tr:nth-child(even) td {
+  background-color: #F6F8FA;
 }/*# sourceMappingURL=main.css.map */
-=======
->>>>>>> fec4897a042e978b3b6397acfaabdb55189055ce
->>>>>>> 3a47d476c6941fcb794616d9a60367ebad20a4b1

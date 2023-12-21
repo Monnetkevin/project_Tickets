@@ -64,7 +64,7 @@ class TicketController extends AbstractController
             $entityManager->persist($ticket);
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_ticket_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_main', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('ticket/new.html.twig', [
