@@ -24,7 +24,7 @@ class MainController extends AbstractController
         return $this->render('main/index.html.twig', [
             'controller_name' => 'MainController',
             'tickets' => $ticketRepository->findBy([], ['dateCreate' => 'DESC']),
-            //'ticketsResolve' => $ticketRepository->findBy([], ['dateCreate' => 'DESC'], ['id' => LIMIT 10 ]),
+            'ticketsResolve' => $ticketRepository->findBy([], ['dateCreate' => 'DESC']),
             'users' => $userRepository->findAll(),
         ]);
     }
