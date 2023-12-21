@@ -105,33 +105,54 @@
     height: 8px
     border-radius: 50%
     background-color: $greenColor
-    // YannG
+    
+    
 // custon ticket HomePage
-.ticketHomeInprogress
-    display: flex
-    border: 1px solid black
-    border-radius: 20px 5px 20px 20px 
-    width: 90%
-    margin-bottom: 50px
-    background-color: $primaryColor
 .ticketHome
     display: flex
-    border: 1px solid black
+    flex-direction: column-reverse
+    border: 2px solid $primaryColor
     border-radius: 20px 5px 20px 20px 
     width: 90%
     margin-bottom: 50px
-    background-color: gray
-   
-    &__image
-        width: 30%
-        padding: 10px
     &__container
-        display: flow
+        display: flex
+        flex-direction: column
         text-align: center
-        &__title
-            font-size: 30px
-            text-align: center
-        &__description
+        &__header
+            display: flex
+            flex-direction: row
+            justify-content: space-around
+            align-items: center
+            width: 90%
+            border-radius: 17px 3px 0 0
+            margin: 0
+            background-color: rgb(49, 83, 151)
+            color: white
+            padding: 0 5%
+            &__firstName
+                margin: 10px
+            &__helper
+                display: flex
+        &__body
+            display: flex
+            &__image
+                object-fit: contain
+                width: 40%
+                padding: 20px
+            &__description
+                width: 100%
+                margin: 10px
+                display: flex
+                flex-direction: column
+                justify-content: space-between
+                &__title
+                    font-size: 30px
+                    text-align: center
+                &__p
+                    margin-bottom: 50px
+                a
+                    margin: 0 auto
 
 
 .homeCircle
@@ -139,3 +160,13 @@
     height: 20px
     background-color: green
     border-radius: 50%
+    margin-right: 10px
+
+.homeCircleRed
+    width: 20px
+    height: 20px
+    background-color: red
+    border-radius: 50%
+    margin-right: 10px
+    &__title
+        color: white
