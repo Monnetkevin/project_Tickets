@@ -44,3 +44,129 @@
         padding: 4px
         text-align: justify
         font-size: 13px
+
+
+
+    // YannG    
+
+.showTicket
+    width: 80%
+    border-radius: 20px 5px 20px 20px
+    border: 2px solid $primaryColor
+    padding: 0 0 40px 0
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+    box-shadow: $primaryColor -3px 3px 10px
+    &__infos
+        display: flex
+        flex-direction: row
+        justify-content: space-around
+        align-items: center
+        width: 90%
+        border-radius: 17px 2px 0 0
+        margin: 0
+        background-color: $primaryColor
+        color: white
+        padding: 0 5%
+        &__date
+        &__owner
+        &__status
+            display: flex
+            align-items: center
+            gap: 10px
+    &__title
+
+    &__img
+        width: 85%
+        object-fit: cover
+    &__description
+        width: 95%
+    &__buttons
+        display: flex
+        justify-content: center
+        gap: 30px
+        margin: 20px 0 40px 0
+.status1
+    width: 10px
+    height: 10px
+    border-radius: 50%
+    background-color: $redColor
+    
+.status2
+    width: 8px
+    height: 8px
+    border-radius: 50%
+    background-color: $orangeColor
+    
+.status3
+    width: 8px
+    height: 8px
+    border-radius: 50%
+    background-color: $greenColor
+    
+    
+// custon ticket HomePage
+.ticketHome
+    display: flex
+    flex-direction: column-reverse
+    border: 2px solid $primaryColor
+    border-radius: 20px 5px 20px 20px 
+    width: 90%
+    margin-bottom: 50px
+    &__container
+        display: flex
+        flex-direction: column
+        text-align: center
+        &__header
+            display: flex
+            flex-direction: row
+            justify-content: space-around
+            align-items: center
+            width: 90%
+            border-radius: 17px 3px 0 0
+            margin: 0
+            background-color: rgb(49, 83, 151)
+            color: white
+            padding: 0 5%
+            &__firstName
+                margin: 10px
+            &__helper
+                display: flex
+        &__body
+            display: flex
+            &__image
+                object-fit: contain
+                width: 40%
+                padding: 20px
+            &__description
+                width: 100%
+                margin: 10px
+                display: flex
+                flex-direction: column
+                justify-content: space-between
+                &__title
+                    font-size: 30px
+                    text-align: center
+                &__p
+                    margin-bottom: 50px
+                a
+                    margin: 0 auto
+
+
+.homeCircle
+    width: 20px
+    height: 20px
+    background-color: green
+    border-radius: 50%
+    margin-right: 10px
+
+.homeCircleRed
+    width: 20px
+    height: 20px
+    background-color: red
+    border-radius: 50%
+    margin-right: 10px
+    &__title
+        color: white

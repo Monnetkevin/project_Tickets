@@ -4,32 +4,55 @@
 {% endblock %}
 
 {% block body %}
-	<div class="home">
-		<h2 class="home__title">Tickets en cours !!</h2>
+	<div class="containerHome">
 		<div class="container">
-
 			<div class="container__ticket">
-				{% for ticket in tickets %}
-					{% if ticket.status.status != "Resolved" %}
-						<article class="ticket container__ticket__home">
-							<div class="ticket__title">
-								{{ ticket.title }}
-							</div>
-							<div class="ticket__description">
-								{{ ticket.description }}
-							</div>
-							{{ticket.owner.firstName}}
-							{% if ticket.helper != NULL %}
-								{{ticket.helper.firstName}}
-							{% endif %}
-							{{ ticket.dateCreate ? ticket.dateCreate|date('Y-m-d H:i:s') : '' }}
-							<a href="{{ path('app_main_edit', {'id': ticket.id}) }}">prendre</a>
-							<a href="{{ path('app_ticket_show', {'id': ticket.id}) }}">show</a>
-						</article>
-					{% endif %}
-				{% endfor %}
-			</div>
+				<h2 class="containerHome__title">Tickets en cours !!</h2>
+				<div class="container__ticket__new">
+					{% for ticket in tickets %}
+						{% if ticket.status.status != "Resolved" %}
 
+							<article class="ticketHome">
+								<div class="ticketHome__container">
+
+									<div class="ticketHome__container__header">
+										<b class="ticketHome__container__header__date">{{ ticket.dateCreate ? ticket.dateCreate|date('d-m-Y à H:i') : '' }}</b>
+										<b class="ticketHome__container__header__firstName">créé par:
+											{{ticket.owner.firstName}}</b>
+
+										{% if ticket.helper == NULL %}
+											<div class="ticketHome__container__header__helper">
+												<div class="homeCircleRed"></div>
+												<a class="homeCircleRed__title" href="{{ path('app_main_edit', {'id': ticket.id}) }}">Pas attribué</a>
+											</div>
+										{% else %}
+											<div class="ticketHome__container__header__helper">
+												<div class="homeCircle"></div>
+												<b>Aidé par:
+													{{ticket.helper.firstName}}</b>
+											</div>
+										{% endif %}
+									</div>
+
+									<div class="ticketHome__container__body">
+										{% if ticket.image != NULL %}
+											<img class="ticketHome__container__body__image" src="{{asset('uploads/img/' ~ ticket.image)}}">
+										{% endif %}
+										<div class="ticketHome__container__body__description">
+											<h3 class="ticketHome__container__body__description__title">{{ ticket.title }}
+											</h3>
+
+											<p class="ticketHome__container__body__p">{{ ticket.description }}</p>
+											<a class="button button--plain" href="{{ path('app_ticket_show', {'id': ticket.id}) }}">Voir le Ticket</a>
+										</div>
+									</div>
+
+								</div>
+							</article>
+						{% endif %}
+					{% endfor %}
+				</div>
+			</div>
 			<div class="container__ticket__inResolved">
 				<h2 class="home__title">Tickets résolus !!</h2>
 				{% for ticket in ticketsResolve %}
@@ -50,23 +73,24 @@
 								<a href="{{ path('app_main_edit', {'id': ticket.id}) }}">prendre</a>
 							{% endif %}
 							<a href="{{ path('app_ticket_show', {'id': ticket.id}) }}">show</a>
+
 						</article>
 					{% endif %}
 				{% endfor %}
 			</div>
+		</div>
 
-			<div class="container__connecte">
-				<h2 class="container__connecte__title">Connectés</h2>
-				{% for user in users %}
-					{% if user.isConnected == true %}
-						<div class="container__connecte__card">
-							<img class="container__connecte__card__icon" src="{{ asset('uploads/avatar/' ~ user.avatar) }}"/>
-							<p class="container__connecte__card__firstname">{{user.firstName}}
-								{{user.lastName|u.truncate(2,'.')}}</p>
-						</div>
-					{% endif %}
-				{% endfor %}
-			</div>
+		<div class="container__connecte">
+			<h2 class="container__connecte__title">Connectés</h2>
+			{% for user in users %}
+				{% if user.isConnected == true %}
+					<div class="container__connecte__card">
+						<img class="container__connecte__card__icon" src="{{ asset('uploads/avatar/' ~ user.avatar) }}"/>
+						<p class="container__connecte__card__firstname">{{user.firstName}}
+							{{user.lastName|u.truncate(2,'.')}}</p>
+					</div>
+				{% endif %}
+			{% endfor %}
 		</div>
 	</div>
 {% endblock %}
