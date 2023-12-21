@@ -28,11 +28,11 @@
         <div class="myTickets__container">
             {% for ticket in tickets %}
                 {% if ticket.owner.id == app.user.id and ticket.status.status != "Resolved"%}
-                <div class="ticket">
-                    <h4 class="ticket__title">{{ticket.title}}</h4>
-                    <div class="ticket__owner">{{ticket.owner.firstName}}</div>
-                    <p class="ticket__description">{{ticket.description}}</p>
-                </div>
+                    <div class="ticket" onmouseout=hiddeTicket("ticket{{ticket.id}}") onmouseover=showTicket("ticket{{ticket.id}}") id="ticket{{ticket.id}}">
+                        <h4 class="ticket__title">{{ticket.title}}</h4>
+                        <div class="ticket__owner">{{ticket.owner.firstName}}</div>
+                        <p class="ticket__description">{{ticket.description}}</p>
+                    </div>
                 {% endif %}
             {% endfor %}
         </div>
@@ -55,4 +55,21 @@
         </div>
     </article>
 </div>
+
+{# <div class="one">
+
+    <div class="two">
+    
+    contenu caché à afficher
+
+    </div>
+    <div class="three">
+        contenu de la div
+    </div>
+</div> #}
+
+
+<script src="{{asset('js/displayTicket.js')}}">
+
+</script>
 {% endblock %}

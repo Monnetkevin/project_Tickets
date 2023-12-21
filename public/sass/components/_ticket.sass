@@ -8,18 +8,23 @@
     border: 1px solid black
     border-radius: 20px 5px 20px 20px 
     width: 150px
-    min-height: 100px
-    max-height: 200px
+    height: 100px
+    transition: 0.3s ease-out
+    margin-bottom: 50px
+    overflow: hidden
     &__title
     &__owner
     &__description
-        display: none
-        background-color: $secondaryColor
+        transition: 0.3s ease-out
+        visibility: hidden
+        background-color: rgb(40, 41, 49)
         border-radius: 0 0 19px 19px
-        width: 100%
+        width: 142px
         height: 100px
+        max-height: 100px
         align-self: bottom
         margin-bottom: 0
-    &:hover
-        &__description
-            display: block
+        color: white
+        padding: 4px
+        text-align: justify
+        font-size: 13px
