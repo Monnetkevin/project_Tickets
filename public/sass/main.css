@@ -115,13 +115,117 @@ a {
   transition: 0.2s;
 }
 
-.footer {
+.ticket {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid black;
+  border-radius: 20px 5px 20px 20px;
+  width: 150px;
+  height: 100px;
+  transition: 0.3s ease-out;
+  margin-bottom: 50px;
+  overflow: hidden;
+}
+.ticket__description {
+  transition: 0.3s ease-out;
+  visibility: hidden;
+  background-color: rgb(40, 41, 49);
+  border-radius: 0 0 19px 19px;
+  width: 142px;
+  height: 100px;
+  max-height: 100px;
+  align-self: bottom;
+  margin-bottom: 0;
+  color: white;
+  padding: 4px;
+  text-align: justify;
+  font-size: 13px;
+}
+
+.home__title {
+  text-align: center;
+  color: rgb(49, 83, 151);
+}
+
+.container {
+  display: flex;
+  margin-top: 20px;
+}
+.container__newTicket {
+  display: flex;
+  margin: 0 auto;
+}
+.container__newTicket__home {
+  margin: 20px;
+}
+.container__connecte {
+  width: 15%;
+  border: 1px solid black;
+  border-radius: 10px 0 0 0;
+}
+.container__connecte__title {
+  text-align: center;
+}
+.container__connecte__card {
+  display: flex;
+  margin: 8px;
+}
+.container__connecte__card__icon {
+  border-radius: 50%;
+  width: 20%;
+}
+.container__connecte__card__firstname {
+  padding-left: 8px;
+  width: 70%;
+}
+.container__inResolved {
+  display: flex;
+  width: 85%;
+}
+
+.cardAccount {
+  margin-bottom: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid black;
+  border-radius: 20px 5px 20px 20px;
+  padding: 20px;
+}
+.cardAccount__content {
   display: flex;
   flex-direction: row;
+  justify-content: start;
+  align-items: center;
+  gap: 30px;
+  margin-bottom: 40px;
+}
+.cardAccount__content__icon {
+  border-radius: 50%;
+  width: 100px;
+}
+.cardAccount__modifyButton {
+  align-self: center;
+}
+
+.myTickets {
+  margin-bottom: 50px;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: rgb(40, 41, 49);
+  margin-bottom: 15px;
 }
-.footer__img {
-  height: 110px;
+.myTickets__title {
+  margin-bottom: 50px;
+}
+.myTickets__container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
 }/*# sourceMappingURL=main.css.map */
