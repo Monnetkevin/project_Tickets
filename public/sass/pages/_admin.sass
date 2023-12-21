@@ -1,54 +1,56 @@
 @use '../utils/_variables' as * 
 
-.cardPromo
-    margin-bottom: 50px
-    display: flex
-    flex-direction: column
-    align-items: center
-    &__content
+.admin
+    h2
+        text-align: center
+        width: 100%
+    .button
+        margin-bottom: 20px
+    &__promo
         display: flex
-        flex-direction: row
-        justify-content: start
-        align-items: center
-        gap: 30px
-        margin-bottom: 40px
-        &__icon
-            border-radius: 50%
-            width: 100px
-    &__modifyButton
-        align-self: center
-            
-.cardAccount
-    margin-bottom: 50px
-    display: flex
-    flex-direction: column
-    align-items: center
-    &__content
-        display: flex
-        flex-direction: row
-        justify-content: start
-        align-items: center
-        gap: 30px
-        margin-bottom: 40px
-        &__icon
-            border-radius: 50%
-            width: 100px
-    &__modifyButton
-        align-self: center
-            
-.cardTickets
-    margin-bottom: 50px
-    display: flex
-    flex-direction: column
-    justify-content: center
-    align-items: center
-    margin-bottom: 15px
-    &__title
-        margin-bottom: 50px
-    &__container
-        display: flex
-        flex-direction: row
         flex-wrap: wrap
         justify-content: center
         align-items: center
-        gap: 30px
+    &__cardPromo
+        margin-bottom: 50px
+        display: flex
+        flex-direction: column
+        align-items: center
+        border: 2.5px solid rgb(49, 83, 151)
+        border-radius: 20px 5px 20px 20px
+        padding: 0px 20px
+        box-shadow: rgb(49, 83, 151) -3px 3px 15px
+        display: flex
+        flex-direction: column
+        justify-content: center
+        align-items: center
+        margin: 0 10px 50px
+    &__user
+        display: flex
+        flex-wrap: wrap
+        justify-content: center
+        align-items: center
+    &__cardUser
+        margin-bottom: 50px
+        display: flex
+        flex-direction: column
+        align-items: center
+        border: 2.5px solid rgb(49, 83, 151)
+        border-radius: 20px 5px 20px 20px
+        padding: 0px 20px
+        box-shadow: rgb(49, 83, 151) -3px 3px 15px
+        display: flex
+        flex-direction: column
+        justify-content: center
+        align-items: center
+        margin: 0 10px 50px
+    .table
+        max-width: 768px
+        margin: 0 auto
+    table
+        width: 100%
+        border-collapse: collapse
+        tr:nth-child(even) th
+            background-color: #F6F8FA
+        tr:nth-child(even) td
+            background-color: #F6F8FA
