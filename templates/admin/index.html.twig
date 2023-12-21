@@ -4,25 +4,25 @@
 
 {% block body %}
 
-<div>
-    <div>
-        <h2>Promotion</h2>
+<div class="admin">
+    <div class="ticket">
+        <h2 class="cardTickets__title">Promotion</h2>
         {% for promotion in promotions %}
-        <div>
+        <div class="cardAccount">
             <h5>{{promotion.promotion}}</h5>
-            <div>
+            <div class="cardAccount__content">
                 <a href="{{ path('app_promotion_edit', {'id': promotion.id}) }}">Modifier</a>
             </div>
         </div>
         {% endfor %}
     </div>
 
-    <div>
+    <div class="pageContainer">
         <h2>Utilisateur</h2>
         {% for user in users %}
-        <div>
+        <div class="cardAccount">
             <h3>{{user.firstName}} {{user.lastName}}</h3>
-            <h4>{{user.promotion.promotion}}</h4>
+            <h4>{% if (user.promotion) %}{{user.promotion.promotion}}{% else %}Aucune promotion affectée{% endif %}</h4>
             <div>
                 <a href="{{ path('app_user_edit', {'id': user.id}) }}">Modifier</a>
             </div>
@@ -31,7 +31,7 @@
     </div>
     
     <h2>Tickets</h2>
-        <table class="{# invisible en mobile #}">
+        <table class="visibiliyDesktop">
             <thead>
                 <tr>
                     <th>De</th>
@@ -74,7 +74,7 @@
             </tbody>
         </table>
             {% for ticket in tickets %}
-                <table class="{# invisible en desktop #}">
+                <table class="visibiliyMobile">
                     <tbody>
                         <tr>
                             <th>De</th>
