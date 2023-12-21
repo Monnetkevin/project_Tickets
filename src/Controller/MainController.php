@@ -29,7 +29,7 @@ class MainController extends AbstractController
         ]);
     }
 
-<<<<<<< HEAD
+
     #[security("is_granted('ROLE_USER')")]
     #[Route('/interdit', name: 'app_interdit')]
     public function interdit(): Response
@@ -37,7 +37,9 @@ class MainController extends AbstractController
         return $this->render('main/interdit.html.twig', [
             'controller_name' => 'MainController',
         ]);
-=======
+    }
+
+    #[security("is_granted('ROLE_USER')")]
     #[Route('/edit/{id}', name: 'app_main_edit', methods: ['GET', 'POST'])]
     public function edit(Ticket $ticket, EntityManagerInterface $entityManager): Response
     {
@@ -50,6 +52,6 @@ class MainController extends AbstractController
         $entityManager->flush();
 
         return $this->redirectToRoute('app_main', [], Response::HTTP_SEE_OTHER);
->>>>>>> fec4897a042e978b3b6397acfaabdb55189055ce
+
     }
 }
