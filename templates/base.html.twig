@@ -45,8 +45,10 @@
 				</div>
 			</div>
 		</header>
+		<a onclick=previousPage() class="button button--plain button--small previousButton">Retour</a>
 		{% block body %}{% endblock %}
 		<footer class="footer">
 			<img class="footer__img" src="{{asset('icons/arinfoLogo.png')}}" alt="Arinfo, École des Métiers du Numérique."/></footer</body>
 	</body>
+	<script src="{{asset('js/displayTicket.js')}}"></script>
 </html>

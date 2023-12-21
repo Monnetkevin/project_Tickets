@@ -6,6 +6,9 @@ a {
   text-decoration: none;
   color: black;
 }
+a:hover {
+  cursor: pointer;
+}
 
 .pageContainer {
   display: flex;
@@ -120,6 +123,7 @@ a {
 }
 .button--empty {
   border: 1.5px solid rgb(49, 83, 151);
+  background-color: white;
   color: rgb(49, 83, 151);
 }
 .button--plain {
@@ -128,13 +132,24 @@ a {
   color: white;
 }
 .button--small {
-  width: 45px;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 2px 8px;
+}
+.button--small:hover {
+  background-color: initial;
 }
 .button:hover {
   border: 1.5px solid black;
   background-color: black;
   color: white;
   transition: 0.2s;
+}
+
+.previousButton {
+  position: sticky;
+  top: 20px;
+  left: 20px;
 }
 
 .ticket {
@@ -191,6 +206,70 @@ a {
   font-size: 13px;
 }
 
+.showTicket {
+  width: 80%;
+  border-radius: 20px 5px 20px 20px;
+  border: 2px solid rgb(49, 83, 151);
+  padding: 0 0 40px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: rgb(49, 83, 151) -3px 3px 10px;
+}
+.showTicket__infos {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  width: 90%;
+  border-radius: 17px 2px 0 0;
+  margin: 0;
+  background-color: rgb(49, 83, 151);
+  color: white;
+  padding: 0 5%;
+}
+.showTicket__infos__status {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.showTicket__img {
+  width: 85%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.showTicket__description {
+  width: 95%;
+}
+.showTicket__buttons {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin: 20px 0 40px 0;
+}
+
+.status1 {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: rgb(202, 0, 0);
+}
+
+.status2 {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: rgb(216, 158, 0);
+}
+
+.status3 {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: rgb(8, 233, 0);
+}
+
 .home__title {
   text-align: center;
   color: rgb(49, 83, 151);
@@ -245,9 +324,10 @@ h3 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 1px solid black;
+  border: 2.5px solid rgb(49, 83, 151);
   border-radius: 20px 5px 20px 20px;
-  padding: 20px;
+  padding: 0px 60px 20px 60px;
+  box-shadow: rgb(49, 83, 151) -3px 3px 15px;
 }
 .cardAccount__content {
   display: flex;
@@ -372,4 +452,3 @@ h3 {
 }/*# sourceMappingURL=main.css.map */
 =======
 >>>>>>> fec4897a042e978b3b6397acfaabdb55189055ce
->>>>>>> 3a47d476c6941fcb794616d9a60367ebad20a4b1

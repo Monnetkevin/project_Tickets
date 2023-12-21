@@ -12,15 +12,26 @@
   transition: 0.2s
   &--empty
     border: 1.5px solid $primaryColor
+    background-color: white
     color: $primaryColor
   &--plain
     background-color: $primaryColor
     border: 0.5px solid $primaryColor
     color: white
   &--small
-    width: 45px
+    width: fit-content
+    padding: 2px 8px
+    &:hover
+      background-color: initial
   &:hover
     border: 1.5px solid black
     background-color: black
     color: white
     transition: 0.2s
+
+
+
+.previousButton
+  position: sticky
+  top: 20px
+  left: 20px

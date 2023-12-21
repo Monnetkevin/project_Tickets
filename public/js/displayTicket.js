@@ -28,3 +28,7 @@ function hiddeTicket(ticket){
       }, 300);
     
 }
+
+function previousPage() {
+    window.history.back();
+}
