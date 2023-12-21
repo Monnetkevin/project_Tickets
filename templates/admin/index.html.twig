@@ -1,0 +1,143 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AdminController!{% endblock %}
+
+{% block body %}
+
+<div>
+    <div>
+        <h2>Promotion</h2>
+        {% for promotion in promotions %}
+        <div>
+            <h5>{{promotion.promotion}}</h5>
+            <div>
+                <a href="{{ path('app_promotion_edit', {'id': promotion.id}) }}">Modifier</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div>
+        <h2>Utilisateur</h2>
+        {% for user in users %}
+        <div>
+            <h3>{{user.firstName}} {{user.lastName}}</h3>
+            <h4>{{user.promotion.promotion}}</h4>
+            <div>
+                <a href="{{ path('app_user_edit', {'id': user.id}) }}">Modifier</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    
+    <h2>Tickets</h2>
+        <table class="{# invisible en mobile #}">
+            <thead>
+                <tr>
+                    <th>De</th>
+                    <th>Titre</th>
+                    <th>Description</th>
+                    <th>Date de Création</th>
+                    <th>Statut</th>
+                    <th>Dernier changement</th>
+                    <th>Par</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for ticket in tickets %}
+                <tr>
+                    <td>{{ ticket.owner.firstName }} {{ ticket.owner.lastName }}</td>
+                    <td>{{ ticket.title }}</td>
+                    <td>{{ ticket.description|u.truncate(50, '...') }}</td>
+                    <td>{{ ticket.dateCreate ? ticket.dateCreate|date('d/m/Y à H:i:s') : '' }}</td>
+                    <td>{{ ticket.status.status }}</td>
+                    <td>
+                        {% if (ticket.lastUpdate) %}
+                            {{ ticket.lastUpdate ? ticket.lastUpdate|date('d/m/Y à H:i:s') : '' }}
+                        {% endif %}
+                    </td>
+                    <td> 
+                        {% if (ticket.helper) %}
+                            {{ ticket.helper.firstName }} {{ ticket.helper.lastName }}
+                        {% endif %}
+                    </td>
+                    <td>
+                        <div><a href="{{ path('app_ticket_show', {'id': ticket.id}) }}" class="">Voir</a></div>
+                        <div><a href="{{ path('app_ticket_edit', {'id': ticket.id}) }}" class="">Modifier</a></div>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="7">Aucune information</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+            {% for ticket in tickets %}
+                <table class="{# invisible en desktop #}">
+                    <tbody>
+                        <tr>
+                            <th>De</th>
+                            <td>{{ ticket.owner.firstName }} {{ ticket.owner.lastName }}</td>
+                        </tr>
+
+                        <tr>
+                            <th>Titre</th>
+                            <td>{{ ticket.title }}</td>
+                        </tr>
+
+                        <tr>
+                            <th>Description</th>
+                            <td>{{ ticket.description|u.truncate(50, '...') }}</td>
+                        </tr>
+
+                        <tr>
+                            <th>Date de Création</th>
+                            <td>{{ ticket.dateCreate ? ticket.dateCreate|date('d/m/Y à H:i:s') : '' }}</td>
+                        </tr>
+
+                        <tr>
+                            <th>Statut</th>
+                            <td>{{ ticket.status.status }}</td>
+                        </tr>
+
+                        <tr>
+                            <th>Dernier changement</th>
+                            <td>
+                                {% if (ticket.lastUpdate) %}
+                                    {{ ticket.lastUpdate ? ticket.lastUpdate|date('d/m/Y à H:i:s') : '' }}
+                                {% endif %}
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th>Par</th>
+                            <td> 
+                                {% if (ticket.helper) %}
+                                    {{ ticket.helper.firstName }} {{ ticket.helper.lastName }}
+                                {% endif %}
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th></th>
+                            <td>
+                                <div><a href="{{ path('app_ticket_show', {'id': ticket.id}) }}" class="">Voir</a></div>
+                                <div><a href="{{ path('app_ticket_edit', {'id': ticket.id}) }}" class="">Modifier</a></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th style="background-color: transparent;"></th>
+                            <td style="background-color: transparent;"></td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            {% endfor %}
+</div>
+
+
+
+
+
+{% endblock %}

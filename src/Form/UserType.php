@@ -34,7 +34,7 @@ class UserType extends AbstractType
                 'label' => 'Promotion',
                 'class' => Promotion::class,
                 'choice_label' => 'promotion',
-                'multiple' => true,
+                'multiple' => false,
                 'expanded' => true,
             ])
         ;

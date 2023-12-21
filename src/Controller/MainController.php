@@ -22,4 +22,13 @@ class MainController extends AbstractController
             'users' => $userRepository->findAll(),
         ]);
     }
+
+    #[security("is_granted('ROLE_USER')")]
+    #[Route('/interdit', name: 'app_interdit')]
+    public function interdit(): Response
+    {
+        return $this->render('main/interdit.html.twig', [
+            'controller_name' => 'MainController',
+        ]);
+    }
 }

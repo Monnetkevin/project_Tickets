@@ -30,7 +30,7 @@
 						<a class="header__content__nav__link" href="/myaccount">Mon compte</a>
 						{% for role in app.user.roles %}
 							{% if role == 'ROLE_ADMIN' %}
-								<a class="header__content__nav__link" href="#">Espace administrateur</a>
+								<a class="header__content__nav__link" href="/admin">Espace administrateur</a>
 							{% endif %}
 						{% endfor %}
 					{% endif %}
