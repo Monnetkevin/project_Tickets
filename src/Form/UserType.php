@@ -27,7 +27,6 @@ class UserType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-
             ->add('firstName', TextType::class, ['label' => 'Prénom',])
             ->add('lastName', TextType::class, ['label' => 'Nom',])
             ->add('idDiscord', TextType::class, ['label' => 'Identifiant du compte Discord',])
