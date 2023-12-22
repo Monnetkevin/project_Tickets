@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Ticket;
 use App\Form\TicketType;
 use App\Repository\UserRepository;
+use App\Repository\StatusRepository;
 use App\Repository\TicketRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -41,17 +42,21 @@ class MainController extends AbstractController
 
     #[security("is_granted('ROLE_USER')")]
     #[Route('/edit/{id}', name: 'app_main_edit', methods: ['GET', 'POST'])]
-    public function edit(Ticket $ticket, EntityManagerInterface $entityManager): Response
+    public function edit(Ticket $ticket, EntityManagerInterface $entityManager, StatusRepository $statusRepository): Response
     {
         $now = new \DateTime();
         $ticket->setLastUpdate($now);
         $helper = $this->getUser();
         $ticket->setHelper($helper);
 
+        if ($ticket->getStatus() != "Resolved" or "inProgress") {
+            $status = $statusRepository->find(2);
+            $ticket->setStatus($status);
+        }
+
         $entityManager->persist($ticket);
         $entityManager->flush();
 
         return $this->redirectToRoute('app_main', [], Response::HTTP_SEE_OTHER);
-
     }
 }
