@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 #[security("is_granted('ROLE_USER')")]
 #[Route('/user')]
@@ -72,6 +73,25 @@ class UserController extends AbstractController
             'form' => $form,
         ]);
     }
+
+    #[security("is_granted('ROLE_ADMIN')")]
+    #[Route('/{id}/edit-status', name: 'app_user_edit_status', methods: ['POST'])]
+    public function editStatus(User $user, Request $request, EntityManagerInterface $entityManager): JsonResponse
+    {
+        
+        // $isConnected = $request->request->get('isConnected');
+        $isConnected = false;
+        
+        
+        $user->setIsConnected($isConnected);
+
+
+        $entityManager->flush();
+
+        return new JsonResponse(['status' => 'success']);
+    }
+  
+
 
     #[security("is_granted('ROLE_ADMIN')")]
     #[Route('/{id}', name: 'app_user_delete', methods: ['POST'])]
