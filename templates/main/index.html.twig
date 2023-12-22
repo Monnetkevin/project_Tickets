@@ -1,7 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello MainController!
-{% endblock %}
+{% block title %}Ticket Helper{% endblock %}
 
 {% block body %}
 	<div class="containerHome">
@@ -16,7 +15,7 @@
 								<div class="ticketHome__container">
 
 									<div class="ticketHome__container__header">
-										<b class="ticketHome__container__header__date">{{ ticket.dateCreate ? ticket.dateCreate|date('d-m-Y à H:i') : '' }}</b>
+										<b class="ticketHome__container__header__date">{{ ticket.dateCreate ? ticket.dateCreate|date('d M à H:i') : '' }}</b>
 										<b class="ticketHome__container__header__firstName">créé par:
 											{{ticket.owner.firstName}}</b>
 
@@ -68,7 +67,7 @@
 							{% if ticket.helper != NULL %}
 								{{ticket.helper.firstName}}
 							{% endif %}
-							{{ ticket.dateCreate ? ticket.dateCreate|date('Y-m-d H:i:s') : '' }}
+							{{ ticket.dateCreate ? ticket.dateCreate|date('d M à H:i') : '' }}
 							{% if ticket.status == "Resolved" %}
 								<a href="{{ path('app_main_edit', {'id': ticket.id}) }}">prendre</a>
 							{% endif %}

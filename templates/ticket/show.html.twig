@@ -9,7 +9,7 @@
 
     <div class="showTicket">
         <div class="showTicket__infos">
-            <p class="showTicket__infos__date">{{ticket.dateCreate|date('d M Y')}}</p>
+            <p class="showTicket__infos__date">{{ticket.dateCreate|date('d M à H:i')}}</p>
             <p class="showTicket__infos__owner button button--small button--empty">{{ticket.owner.firstName}}</p>
             
                 {% if ticket.status.id == 1 %}
@@ -30,7 +30,7 @@
                         <p>Résolu</p>
                     </div>
                 {% else %}
-                    <p>status inconnu</p>
+                    <p>Status inconnu</p>
                 {% endif %}
             
         </div>
@@ -41,8 +41,6 @@
         
         <p class="showTicket__description">{{ticket.description}}</p>
     </div>
-
-    {# <a href="{{ path('app_ticket_index') }}">back to list</a> #}
 
     {% if app.user.id == ticket.owner.id %}
     <div class="showTicket__buttons">

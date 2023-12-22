@@ -1,16 +1,16 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Promotion index{% endblock %}
+{% block title %}Promotion{% endblock %}
 
 {% block body %}
-    <h1>Promotion index</h1>
+    <h2>Promotion</h2>
 
     <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
                 <th>Promotion</th>
-                <th>actions</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -19,17 +19,17 @@
                 <td>{{ promotion.id }}</td>
                 <td>{{ promotion.promotion }}</td>
                 <td>
-                    <a href="{{ path('app_promotion_show', {'id': promotion.id}) }}">show</a>
-                    <a href="{{ path('app_promotion_edit', {'id': promotion.id}) }}">edit</a>
+                    <a href="{{ path('app_promotion_show', {'id': promotion.id}) }}">Voir</a>
+                    <a href="{{ path('app_promotion_edit', {'id': promotion.id}) }}">Éditer</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="3">no records found</td>
+                <td colspan="3">Aucune information trouvée</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('app_promotion_new') }}">Create new</a>
+    <a href="{{ path('app_promotion_new') }}">Créer une promotion</a>
 {% endblock %}

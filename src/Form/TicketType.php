@@ -8,14 +8,16 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class TicketType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('title')
-            ->add('description')
+            ->add('title', TextType::class, ['label' => 'Titre',])
+            ->add('description', TextareaType::class, ['label' => 'Description',])
             ->add('image', FileType::class, [
                 'label' => 'Capture d\'écran',
                 'mapped' => false,

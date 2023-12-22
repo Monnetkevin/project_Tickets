@@ -9,8 +9,9 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 class UserType extends AbstractType
 {
@@ -32,9 +33,9 @@ class UserType extends AbstractType
                 'multiple' => false,
                 'expanded' => true,
             ])           
-            ->add('firstName')
-            ->add('lastName')
-            ->add('idDiscord') 
+            ->add('firstName', TextType::class, ['label' => 'Prénom',])
+            ->add('lastName', TextType::class, ['label' => 'Nom',])
+            ->add('idDiscord', TextType::class, ['label' => 'Identifiant du compte Discord',]) 
             ->add('avatar', FileType::class, [
                 'label' => 'Avatar',
                 'mapped' => false,

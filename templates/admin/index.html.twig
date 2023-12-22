@@ -40,6 +40,7 @@
                     <th>Titre</th>
                     <th>Description</th>
                     <th>Statut</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -82,7 +83,7 @@
 
                         <tr>
                             <th>Date de Création</th>
-                            <td>{{ ticket.dateCreate ? ticket.dateCreate|date('d/m/Y à H:i:s') : '' }}</td>
+                            <td>{{ ticket.dateCreate ? ticket.dateCreate|date('d M à H:i') : '' }}</td>
                         </tr>
 
                         <tr>
@@ -94,7 +95,7 @@
                             <th>Dernier changement</th>
                             <td>
                                 {% if (ticket.lastUpdate) %}
-                                    {{ ticket.lastUpdate ? ticket.lastUpdate|date('d-m-Y à H:i:s') : '' }}
+                                    {{ ticket.lastUpdate ? ticket.lastUpdate|date('d M à H:i') : '' }}
                                 {% endif %}
                             </td>
                         </tr>

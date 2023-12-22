@@ -1,20 +1,20 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Ticket index{% endblock %}
+{% block title %}Ticket{% endblock %}
 
 {% block body %}
-    <h1>Ticket index</h1>
+    <h2>Ticket</h2>
 
     <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Title</th>
+                <th>Titre</th>
                 <th>Description</th>
                 <th>Image</th>
-                <th>DateCreate</th>
-                <th>LastUpdate</th>
-                <th>actions</th>
+                <th>Date de création</th>
+                <th>Dernier changement</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -24,20 +24,20 @@
                 <td>{{ ticket.title }}</td>
                 <td>{{ ticket.description }}</td>
                 <td>{{ ticket.image }}</td>
-                <td>{{ ticket.dateCreate ? ticket.dateCreate|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ ticket.lastUpdate ? ticket.lastUpdate|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ ticket.dateCreate ? ticket.dateCreate|date('d M à H:i') : '' }}</td>
+                <td>{{ ticket.lastUpdate ? ticket.lastUpdate|date('d M à H:i') : '' }}</td>
                 <td>
-                    <a href="{{ path('app_ticket_show', {'id': ticket.id}) }}">show</a>
-                    <a href="{{ path('app_ticket_edit', {'id': ticket.id}) }}">edit</a>
+                    <a href="{{ path('app_ticket_show', {'id': ticket.id}) }}">Voir</a>
+                    <a href="{{ path('app_ticket_edit', {'id': ticket.id}) }}">Éditer</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="7">no records found</td>
+                <td colspan="7">Aucune information trouvée</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('app_ticket_new') }}">Create new</a>
+    <a href="{{ path('app_ticket_new') }}">Créer un nouveau ticket</a>
 {% endblock %}

@@ -1,11 +1,10 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Register
-{% endblock %}
+{% block title %}Créer un compte{% endblock %}
 
 {% block body %}
 	<div class="form">
-		<h1 class="form__title">Register</h1>
+		<h2 class="form__title">Créer un compte</h2>
 		<div class="form__content">
 			{{ form_start(registrationForm) }}
 			{{ form_errors(registrationForm) }}
@@ -31,10 +30,10 @@
 			{{ form_widget(registrationForm.plainPassword.second, {'attr': {'class': 'form__content__input form-control'}})}}
 			<div class="form__content__label">
 				{{ form_row(registrationForm.agreeTerms, {
-					label: 'Accepter les termes et le partage de vos données personnelles (Nom, Prénom, Adresse, Mail, etc...)'
+					label: 'Accepter les termes et le partage de vos données personnelles'
 				})}}
 			</div>
-			<button type="submit" class="button button--plain">Register</button>
+			<button type="submit" class="button button--plain">Valider</button>
 			{{ form_end(registrationForm) }}
 		</div>
 	</div>

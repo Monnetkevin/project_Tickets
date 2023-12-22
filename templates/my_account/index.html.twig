@@ -50,25 +50,34 @@
 
     <article class="myOldTickets">
         <h3 class="myOldTickets__title">Mes anciens tickets</h3>
-        <table class="{# invisible en mobile #}">
-        desktop
+        
+    <div class="table">
+        <table class="visibiliyDesktop">
             <thead>
                 <tr>
+                    <th>Résolu par</th>
                     <th>Titre</th>
                     <th>Description</th>
                     <th>Capture d'écran</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
             {% for ticket in tickets %}
                 {% if ticket.status.id == 3 %}
                     <tr>
+                        <td> 
+                            {{ ticket.helper.firstName }} {{ ticket.helper.lastName }}
+                        </td>
                         <td>{{ticket.title}}</td>
                         <td>{{ticket.description}}<td>
                         <td>
                             {% if ticket.image %}
-                            <img src="{{asset('uploads/img/{{ticket.image}}')}}"/>
+                                <img src="{{asset('uploads/img/{{ticket.image}}')}}"/>
                             {% endif %}
+                        </td>
+                        <td>
+                            <div><a href="{{ path('app_ticket_show', {'id': ticket.id}) }}"  class="button button--plain">Voir</a></div>
                         </td>
                     </tr>
                 {% endif %}
@@ -77,11 +86,18 @@
         </table>
 
 
-        <table class="{# invisible en desktop #}">
-        mobile
+        <table class="visibiliyMobile">
             <tbody>
             {% for ticket in tickets %}
                 {% if ticket.status.id == 3 %}
+                    <tr>
+                        <th>Par</th>
+                        <td> 
+                            {% if (ticket.helper) %}
+                                {{ ticket.helper.firstName }} {{ ticket.helper.lastName }}
+                            {% endif %}
+                        </td>
+                    </tr>
                     <tr>
                         <th>Titre</th>
                         <td>{{ticket.title}}</td>
@@ -90,10 +106,18 @@
                         <th>description</th>
                         <td>{{ticket.description}}</td>
                     </tr>
+                    <tr>
+                        <th></th>
+                        <td>
+                            <div><a href="{{ path('app_ticket_show', {'id': ticket.id}) }}"  class="button button--plain">Voir</a></div>
+                        </td>
+                    </tr>
                 {% endif %}
             {% endfor %}
             </tbody>
         </table>
+        
+    </div>
 
     </article>
 
