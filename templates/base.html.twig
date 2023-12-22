@@ -43,20 +43,29 @@
 		{% block body %}{% endblock %}
 		<footer class="footer">
 			<img class="footer__img" src="{{asset('icons/arinfoLogo.png')}}" alt="Arinfo, École des Métiers du Numérique."/></footer</body>
-			
+
 	</body>
 	<script src="{{asset('js/displayTicket.js')}}"></script>
-	<script src="{{asset('js/checkConnected.js')}}"></script>
+	
 
 
 	{% if app.user %}
+		<script src="{{asset('js/checkConnected.js')}}"></script>
+
 		<script>
-			var isConnected = {{app.user.isConnected}};
-			let setStatusUser = isActive(isConnected);
-			
+
+			let userStatus;
+
+			// setInterval(function(){
+			// 	userStatus = isActive();
+
+			// 	if(userStatus == 0 && {{app.user.isConnected}} == 1){
+			// 		setUserInactive({{app.user.id}}, userStatus);
+			// 	}
+			// }, 1000);
+
 		</script>
 		
-
 	{% endif %}
 	
 	
