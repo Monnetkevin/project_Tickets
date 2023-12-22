@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Ticket Helper{% endblock %}
+{% block title %}Ticket Helper
+{% endblock %}
 
 {% block body %}
 	<div class="containerHome">
@@ -24,7 +25,7 @@
 											{% if ticket.helper == NULL %}
 												<div class="ticketHome__container__header__helper">
 													<div class="homeCircleRed"></div>
-													<p class="button button--empty button--small" href="{{ path('app_main_edit', {'id': ticket.id}) }}">Nouveau</p>
+													<a class="button button--empty button--small" href="{{ path('app_main_edit', {'id': ticket.id}) }}">Nouveau</a>
 												</div>
 											{% else %}
 												<div class="ticketHome__container__header__helper">
@@ -32,13 +33,15 @@
 													<b>Aidé par:
 														{{ticket.helper.firstName}}
 														{{ticket.helper.lastName|u.truncate(2,'.')}}</b>
+
 												</div>
+
 											{% endif %}
 										{% else %}
 											{% if ticket.helper == NULL %}
 												<div class="ticketHome__container__header__helper">
 													<div class="homeCircleRed"></div>
-													<a class="homeCircleRed__title">Votre ticket</a>
+													<p class="homeCircleRed__title">Votre ticket</p>
 												</div>
 											{% else %}
 												<div class="ticketHome__container__header__helper">
@@ -46,6 +49,9 @@
 													<b>Aidé par:
 														{{ticket.helper.firstName}}
 														{{ticket.helper.lastName|u.truncate(2,'.')}}</b>
+													<a class="ticketHome__container__header__helper__button button button--empty button--small" href="{{ path('app_main_resolved', {'id': ticket.id}) }}">
+														Résolu
+													</a>
 												</div>
 											{% endif %}
 										{% endif %}
@@ -70,32 +76,32 @@
 					{% endfor %}
 				</div>
 			</div>
-			        {# <div class="container__ticket__inResolved">
-										<h2 class="home__title">Tickets résolus !!</h2>
-										{% for ticket in ticketsResolve %}
-											{% if ticket.status.status == "Resolved" %}
-												<article class="ticket container__ticket__inResolved__home">
-													<div class="ticket__title">
-														{{ ticket.title }}
-													</div>
-													<div class="ticket__description">
-														{{ ticket.description }}
-													</div>
-													{{ticket.owner.firstName}}
-													{% if ticket.helper != NULL %}
-														{{ticket.helper.firstName}}
-													{% endif %}
-													{{ ticket.dateCreate ? ticket.dateCreate|date('Y-m-d H:i:s') : '' }}
-													{% if ticket.status == "Resolved" %}
-														<a href="{{ path('app_main_edit', {'id': ticket.id}) }}">prendre</a>
-													{% endif %}
-													<a href="{{ path('app_ticket_show', {'id': ticket.id}) }}">show</a>
-						
-												</article>
-											{% endif %}
-										{% endfor %}
-									</div>
-                #}
+			{# <div class="container__ticket__inResolved">
+																																																																												<h2 class="home__title">Tickets résolus !!</h2>
+																																																																												{% for ticket in ticketsResolve %}
+																																																																													{% if ticket.status.status == "Resolved" %}
+																																																																														<article class="ticket container__ticket__inResolved__home">
+																																																																															<div class="ticket__title">
+																																																																																{{ ticket.title }}
+																																																																															</div>
+																																																																															<div class="ticket__description">
+																																																																																{{ ticket.description }}
+																																																																															</div>
+																																																																															{{ticket.owner.firstName}}
+																																																																															{% if ticket.helper != NULL %}
+																																																																																{{ticket.helper.firstName}}
+																																																																															{% endif %}
+																																																																															{{ ticket.dateCreate ? ticket.dateCreate|date('Y-m-d H:i:s') : '' }}
+																																																																															{% if ticket.status == "Resolved" %}
+																																																																																<a href="{{ path('app_main_edit', {'id': ticket.id}) }}">prendre</a>
+																																																																															{% endif %}
+																																																																															<a href="{{ path('app_ticket_show', {'id': ticket.id}) }}">show</a>
+																																																																								
+																																																																														</article>
+																																																																													{% endif %}
+																																																																												{% endfor %}
+																																																																											</div>
+																																																																		                #}
 		</div>
 
 		<div class="container__connecte">

@@ -59,4 +59,21 @@ class MainController extends AbstractController
 
         return $this->redirectToRoute('app_main', [], Response::HTTP_SEE_OTHER);
     }
+
+    #[security("is_granted('ROLE_USER')")]
+    #[Route('/resolved/{id}', name: 'app_main_resolved', methods: ['GET', 'POST'])]
+    public function resolved(Ticket $ticket, EntityManagerInterface $entityManager, StatusRepository $statusRepository): Response
+    {
+        if ($ticket->getStatus() != "Resolved") {
+            $now = new \DateTime();
+            $ticket->setLastUpdate($now);
+            $status = $statusRepository->find(3);
+            $ticket->setStatus($status);
+        }
+
+        $entityManager->persist($ticket);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('app_main', [], Response::HTTP_SEE_OTHER);
+    }
 }

@@ -1,4 +1,35 @@
-{{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Valider') }}</button>
-{{ form_end(form) }}
+<div class="form">
+	{{form_start(form)}}
+	<div class="form__content">
+		{% if "ROLE_ADMIN" in app.user.roles %}
+			<div class="form__content__label">
+				{{ form_label(form.roles)}}
+			</div>
+			{{ form_widget(form.roles, {'attr' : {'class': 'form__content__input form-control' }}) }}
+			<div class="form__content__label">
+				{{ form_label(form.promotion)}}
+			</div>
+			{{ form_widget(form.promotion, {'attr' : {'class': 'form__content__input form-control' }}) }}
+		{% endif %}
+		<div class="form__content">
+			<div class="form__content__label">
+				{{ form_label(form.firstName)}}
+			</div>
+			{{ form_widget(form.firstName, {'attr' : {'class': 'form__content__input form-control' }}) }}
+			<div class="form__content__label">
+				{{ form_label(form.lastName)}}
+			</div>
+			{{ form_widget(form.lastName, {'attr' : {'class': 'form__content__input form-control' }}) }}
+			<div class="form__content__label">
+				{{ form_label(form.idDiscord)}}
+			</div>
+			{{ form_widget(form.idDiscord, {'attr' : {'class': 'form__content__input form-control' }}) }}
+			<div class="form__content__label">
+				{{ form_label(form.avatar)}}
+			</div>
+			{{ form_widget(form.avatar, {'attr' : {'class': 'form__content__input form-control' }}) }}
+		</div>
+		<button class="button button--plain">{{ button_label|default('Valider') }}</button>
+		{{ form_end(form) }}
+	</div>
+</div>

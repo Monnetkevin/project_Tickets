@@ -12,10 +12,11 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
-#[security("is_granted('ROLE_ADMIN')")]
+#[security("is_granted('ROLE_USER')")]
 #[Route('/user')]
 class UserController extends AbstractController
 {
+    #[security("is_granted('ROLE_ADMIN')")]
     #[Route('/', name: 'app_user_index', methods: ['GET'])]
     public function index(UserRepository $userRepository): Response
     {
@@ -24,6 +25,7 @@ class UserController extends AbstractController
         ]);
     }
 
+    #[security("is_granted('ROLE_ADMIN')")]
     #[Route('/new', name: 'app_user_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
@@ -44,6 +46,7 @@ class UserController extends AbstractController
         ]);
     }
 
+    #[security("is_granted('ROLE_ADMIN')")]
     #[Route('/{id}', name: 'app_user_show', methods: ['GET'])]
     public function show(User $user): Response
     {
@@ -70,10 +73,11 @@ class UserController extends AbstractController
         ]);
     }
 
+    #[security("is_granted('ROLE_ADMIN')")]
     #[Route('/{id}', name: 'app_user_delete', methods: ['POST'])]
     public function delete(Request $request, User $user, EntityManagerInterface $entityManager): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$user->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $user->getId(), $request->request->get('_token'))) {
             $entityManager->remove($user);
             $entityManager->flush();
         }
