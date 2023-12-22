@@ -43,6 +43,21 @@
 		{% block body %}{% endblock %}
 		<footer class="footer">
 			<img class="footer__img" src="{{asset('icons/arinfoLogo.png')}}" alt="Arinfo, École des Métiers du Numérique."/></footer</body>
+			
 	</body>
 	<script src="{{asset('js/displayTicket.js')}}"></script>
+	<script src="{{asset('js/checkConnected.js')}}"></script>
+
+
+	{% if app.user %}
+		<script>
+			var isConnected = {{app.user.isConnected}};
+			let setStatusUser = isActive(isConnected);
+			
+		</script>
+		
+
+	{% endif %}
+	
+	
 </html>
