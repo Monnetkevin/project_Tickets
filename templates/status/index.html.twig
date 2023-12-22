@@ -1,16 +1,16 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Status index{% endblock %}
+{% block title %}Status{% endblock %}
 
 {% block body %}
-    <h1>Status index</h1>
+    <h2>Status</h2>
 
     <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Status</th>
-                <th>actions</th>
+                <th>Statuts</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -19,17 +19,17 @@
                 <td>{{ status.id }}</td>
                 <td>{{ status.status }}</td>
                 <td>
-                    <a href="{{ path('app_status_show', {'id': status.id}) }}">show</a>
-                    <a href="{{ path('app_status_edit', {'id': status.id}) }}">edit</a>
+                    <a href="{{ path('app_status_show', {'id': status.id}) }}">Voir</a>
+                    <a href="{{ path('app_status_edit', {'id': status.id}) }}">Éditer</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="3">no records found</td>
+                <td colspan="3">Aucune information trouvée</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('app_status_new') }}">Create new</a>
+    <a href="{{ path('app_status_new') }}">Créer nouveau</a>
 {% endblock %}

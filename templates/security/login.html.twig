@@ -1,7 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Log in!
-{% endblock %}
+{% block title %}S'identifier{% endblock %}
 
 {% block body %}
 	<div class="form">
@@ -12,24 +11,24 @@
 
 			{% if app.user %}
 				<div class="mb-3">
-					You are logged in as
+					Vous êtes connecté avec 
 					{{ app.user.userIdentifier }},
-					<a href="{{ path('app_logout') }}">Logout</a>
+					<a href="{{ path('app_logout') }}">Se déconnecter</a>
 				</div>
 			{% endif %}
-			<h1 class="form__title">sign in</h1>
+			<h2 class="form__title">S'identifier</h2>
 			<div class="form__content">
-				<label class="form__content__label" for="inputEmail">Email</label>
+				<label class="form__content__label" for="inputEmail">Mail</label>
 				<input class="form__content__input form-control" type="email" value="{{ last_username }}" name="email" id="inputEmail" autocomplete="email" required autofocus>
-				<label class="form__content__label" for="inputPassword">Password</label>
+				<label class="form__content__label" for="inputPassword">Mot de passe</label>
 				<input class="form__content__input form-control" type="password" name="password" id="inputPassword" autocomplete="current-password" required>
 
 				<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 
 				<button class="button button--plain" type="submit">
-					Sign in
+					S'identifier
 				</button>
-				<a href="{{ path('app_register')}}">Registration</a>
+				<a href="{{ path('app_register')}}">Créer un compte</a>
 			</div>
 		</form>
 	</div>

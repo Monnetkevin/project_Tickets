@@ -4,55 +4,53 @@
 {% endblock %}
 
 {% block body %}
-	<div class="pageContainer">
+<div class="pageContainer">
 
-		<h2>{{ticket.title}}</h2>
+    <h2>{{ticket.title}}</h2>
 
-		<div class="showTicket">
-			<div class="showTicket__infos">
-				<p class="showTicket__infos__date">{{ticket.dateCreate|date('d M Y')}}</p>
-				<p class="showTicket__infos__owner button button--small button--empty">{{ticket.owner.firstName}}</p>
+    <div class="showTicket">
+        <div class="showTicket__infos">
+            <p class="showTicket__infos__date">{{ticket.dateCreate|date('d M à H:i')}}</p>
+            <p class="showTicket__infos__owner button button--small button--empty">{{ticket.owner.firstName}}</p>
+            
+                {% if ticket.status.id == 1 %}
+                    <div class="showTicket__infos__status">
+                        <p class="status1"></p>
+                        <p>Nouveau</p>
+                    </div>
 
-				{% if ticket.status.id == 1 %}
-					<div class="showTicket__infos__status">
-						<p class="status1"></p>
-						<p>Nouveau</p>
-					</div>
+                    
+                {% elseif ticket.status.id == 2 %}
+                    <div class="showTicket__infos__status">
+                        <p class="status2"></p>
+                        <p>En cours</p>
+                    </div>
+                {% elseif ticket.status.id == 3 %}
+                    <div class="showTicket__infos__status">
+                        <p class="status3"></p>
+                        <p>Résolu</p>
+                    </div>
+                {% else %}
+                    <p>Status inconnu</p>
+                {% endif %}
+            
+        </div>
+        <h3 class="showTicket__title">{{ticket.title}}</h3>
+        {% if ticket.image %}
+            <img class="showTicket__img" src="{{asset('uploads/img/' ~ ticket.image)}}" alt="Screenshot du problème"/>
+        {% endif %}
+        
+        <p class="showTicket__description">{{ticket.description}}</p>
+    </div>
 
+    {% if app.user.id == ticket.owner.id %}
+    <div class="showTicket__buttons">
+        <a class="button button--empty" href="{{ path('app_ticket_edit', {'id': ticket.id}) }}">Modifier</a>
 
-				{% elseif ticket.status.id == 2 %}
-					<div class="showTicket__infos__status">
-						<p class="status2"></p>
-						<p>En cours</p>
-					</div>
-				{% elseif ticket.status.id == 3 %}
-					<div class="showTicket__infos__status">
-						<p class="status3"></p>
-						<p>Résolu</p>
-					</div>
-				{% else %}
-					<p>status inconnu</p>
-				{% endif %}
+        {{ include('ticket/_delete_form.html.twig') }}
+    </div>
+        
+    {% endif %}
 
-			</div>
-			<h3 class="showTicket__title">{{ticket.title}}</h3>
-			{% if ticket.image %}
-				<img class="showTicket__img" src="{{asset('uploads/img/' ~ ticket.image)}}" alt="Screenshot du problème"/>
-			{% endif %}
-
-			<p class="showTicket__description">{{ticket.description}}</p>
-		</div>
-
-		{# <a href="{{ path('app_ticket_index') }}">back to list</a> #}
-
-		{% if app.user.id == ticket.owner.id %}
-			<div class="showTicket__buttons">
-				<a class="button button--empty" href="{{ path('app_ticket_edit', {'id': ticket.id}) }}">Modifier</a>
-
-				{{ include('ticket/_delete_form.html.twig') }}
-			</div>
-
-		{% endif %}
-
-	</div>
+</div>
 {% endblock %}

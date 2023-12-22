@@ -1,7 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello MainController!
-{% endblock %}
+{% block title %}Ticket Helper{% endblock %}
 
 {% block body %}
 	<div class="containerHome">
@@ -16,7 +15,7 @@
 								<div class="ticketHome__container">
 
 									<div class="ticketHome__container__header">
-										<b class="ticketHome__container__header__date">{{ ticket.dateCreate ? ticket.dateCreate|date('d-m-Y à H:i') : '' }}</b>
+										<b class="ticketHome__container__header__date">{{ ticket.dateCreate ? ticket.dateCreate|date('d M à H:i') : '' }}</b>
 										<b class="ticketHome__container__header__firstName">créé par:
 											{{ticket.owner.firstName}}
 											{{ticket.owner.lastName|u.truncate(2, '.')}}</b>
@@ -71,7 +70,7 @@
 					{% endfor %}
 				</div>
 			</div>
-			{# <div class="container__ticket__inResolved">
+			        {# <div class="container__ticket__inResolved">
 										<h2 class="home__title">Tickets résolus !!</h2>
 										{% for ticket in ticketsResolve %}
 											{% if ticket.status.status == "Resolved" %}
@@ -95,7 +94,8 @@
 												</article>
 											{% endif %}
 										{% endfor %}
-									</div> #}
+									</div>
+                #}
 		</div>
 
 		<div class="container__connecte">
