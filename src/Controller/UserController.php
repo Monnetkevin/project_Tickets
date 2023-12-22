@@ -74,7 +74,7 @@ class UserController extends AbstractController
         ]);
     }
 
-    
+    #[security("is_granted('ROLE_ADMIN')")]
     #[Route('/{id}/edit-status', name: 'app_user_edit_status', methods: ['POST'])]
     public function editStatus(User $user, Request $request, EntityManagerInterface $entityManager): JsonResponse
     {
@@ -90,27 +90,6 @@ class UserController extends AbstractController
 
         return new JsonResponse(['status' => 'success']);
     }
-
-  
-
-
-    
-    #[Route('/{id}/edit-status', name: 'app_user_edit_status', methods: ['POST'])]
-    public function editStatus(User $user, Request $request, EntityManagerInterface $entityManager): JsonResponse
-    {
-        
-        // $isConnected = $request->request->get('isConnected');
-        $isConnected = false;
-        
-        
-        $user->setIsConnected($isConnected);
-
-
-        $entityManager->flush();
-
-        return new JsonResponse(['status' => 'success']);
-    }
-
   
 
 
