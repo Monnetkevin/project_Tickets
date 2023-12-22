@@ -6,7 +6,7 @@
 
 <div class="admin">
     <div class="admin__promo">
-        <h2 class="cardTickets__title">Promotion</h2>
+        <h2 class="cardTickets__title">Promotions</h2>
         {% for promotion in promotions %}
         <div class="admin__cardPromo">
             <h5>{{promotion.promotion}}</h5>
@@ -18,7 +18,7 @@
     </div>
 
     <div class="admin__user">
-        <h2>Utilisateur</h2>
+        <h2>Utilisateurs</h2>
         {% for user in users %}
         <div class="admin__cardUser">
             <h3>{{user.firstName}} {{user.lastName}}</h3>

@@ -73,7 +73,7 @@
                         <td>{{ticket.description}}<td>
                         <td>
                             {% if ticket.image %}
-                                <img src="{{asset('uploads/img/{{ticket.image}}')}}"/>
+                                <img src="{{asset('uploads/img/' ~ ticket.image)}}"/>
                             {% endif %}
                         </td>
                         <td>
